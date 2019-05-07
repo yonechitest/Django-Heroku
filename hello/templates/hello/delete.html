@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang=ja>
+    <head>
+        <mata charset=utf-8>
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <input type="button" class="btn-gradient-3d-orange"  value="検索画面にもどる" onClick="location.href='{% url 'find' %}'">    
+        <br>
+        <br>
+        <p-delete>※レコードを削除します。</p-delete>
+        <table>
+            <tr><th>名前</th><td>{{obj.name}}</td></tr>
+            <tr><th>メール</th><td>{{obj.mail}}</td></tr>
+            <tr><th>性別</th><td>
+            {% if obj.gender == False %}男{% endif %}
+            {% if obj.gender == True %}女{% endif %}
+            <tr><th>年齢</th><td>{{obj.age}}</td></tr>
+            <tr><th>登録日</th><td>{{obj.birthday}}</td></tr>
+            <form action="{% url 'delete' id %}" method="post">
+                {% csrf_token %}
+                <tr><td></td><td><input type="submit" value="削除"></td></td>
+            </form>
+        </table>
+    </body>
+</html>

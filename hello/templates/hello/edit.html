@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang=ja>
+    <head>
+        <mata charset=utf-8>
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <input type="button" class="btn-gradient-3d-orange"  value="検索画面にもどる" onClick="location.href='{% url 'find' %}'">    
+        <table>
+            <form action="{% url 'edit' id %}" method="post">
+                {% csrf_token %}
+                <tr><th>名前</th><td>{{form.name}}</td></tr>
+                <tr><th>メール</th><td>{{form.mail}}</td></tr>
+                <tr><th rowspan="2">性別</th><td>{{form.gender}}</td></tr>
+                <tr><td>※〆有:女、〆無:男</td></tr>
+                <tr><th>年齢</th><td>{{form.age}}</td></tr>
+                <tr><th>誕生日</th><td>{{form.birthday}}</td></tr>
+                <tr><td></td><td><input type="submit" value="更新"></td></td>
+            </form>
+        </table>
+    </body>
+</html>
