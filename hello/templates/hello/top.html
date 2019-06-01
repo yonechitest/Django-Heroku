@@ -1,0 +1,92 @@
+{% load static %}
+<!doctype html>
+<html lang=ja>
+    <head>
+        <mata charset=utf-8>
+        <script type="text/javascript" src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+        <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
+        <title>teat</title>
+
+    </head>
+<body>
+        <div class="sp">
+            <div class="top_pull_style container"> 
+                <div class="top_pull_style1  ">
+                    <select onChange="search()" id="place" class="form-control ">
+                        <option  value="">どこで。</option>
+                            {% for data in place %}
+                                <optgroup label="{{data.main_place}}">
+                                    <option  value="{{data.place1}}">{{data.place1}}</option>
+                                    <option  value="{{data.place2}}">{{data.place2}}</option>
+                                    <option  value="{{data.place3}}">{{data.place3}}</option>
+                                </optgroup>
+                            {% endfor %}
+                    </select>
+                </div>
+    
+                <div class="top_pull_style2  ">
+                    <select onChange="search()" id="purpose" class="form-control "　>
+                        <option  value="">なにを。</option>
+                            <optgroup label="美容院">
+                                <option  value="カット">カット</option>
+                                <option  value="ヘアカラー">ヘアカラー</option>
+                                <option  value="トリートメント">トリートメント</option>
+                            </optgroup>
+                            <optgroup label="喫茶店">
+                                <option  value="電源あり">電源あり</option>
+                                <option  value="WiFiあり">WiFiあり</option>
+                                <option  value="ペット同伴OK">ペット同伴OK</option>
+                            </optgroup>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="loading" ><img id="gifobj" src="" /></div>
+            <p id="saikounokekka" class="" style=""></p>
+         </div>
+            <script type="text/javascript" src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+
+        <script>
+            function search() {
+                if (document.getElementById('place').value !== "" && document.getElementById('purpose').value !== "" ) {
+                    outputgif();
+                    setTimeout(loadstart, 5000);
+                }
+            }
+            
+            function loadstart(){
+                location.href='{% url 'top2' %}'
+            }
+            
+            function outputgif(){
+                document.getElementById("gifobj").src = "{% static 'img/gif-load.gif' %}";;
+                
+                
+                
+                var elm = document.getElementById("saikounokekka");
+                elm.classList.add("saikounokekka");
+                elm.textContent = '最高の結果をロード中';
+            }            
+            
+            jQuery(window).load(function(){
+                jQuery("#loading").hide();
+            });
+
+
+
+
+
+
+
+
+        </script>    
+
+
+
+    </body>    
+</html>
+
+
+    

@@ -5,7 +5,10 @@ from .models import Friend, Message
 from .forms import FriendForm, MessageForm
 from .forms import FindForm
 from .forms import CheckForm
+from .models import place
+from .models import purpose
 from django.core.paginator import Paginator
+
 
 #初期表示
 def index(request, num=1):
@@ -143,4 +146,28 @@ def msgdelete(request, num):
 
 
 
+
+
+def top(request):
+    pulllist = {
+        'place': place.objects.all(),
+        'purpose': purpose.objects.all(),
+    }
+    return render(request, 'hello/top.html', pulllist)
+
+
+
+
+def top2(request): 
+    params = {
+            'title': 'メンバー検索画面',
+            'data1': place.objects.all(),
+            'data2': purpose.objects.all(),
+    }
+    return render(request, 'hello/top2.html', params)
+
+
+
+def devtest(request):
+    return render(request, 'hello/devtest.html')
     

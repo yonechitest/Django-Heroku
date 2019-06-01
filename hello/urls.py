@@ -16,4 +16,12 @@ urlpatterns = [
     path('msgedit/<int:num>', views.msgedit, name='msgedit'),
     path('msgdelete/<int:num>', views.msgdelete, name='msgdelete'),
 
+
+
+
+    path('top', views.top, name='top'),
+    path('top2', views.top2, name='top2'),
+    path('devtest', views.devtest, name='devtest'),
+    
+
 ]
