@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
-        <title>teat</title>
+        <title>limmy</title>
 
     </head>
 <body>
@@ -40,7 +40,7 @@
                     <select onChange="search()" id="purpose" class="form-control "　>
                         <option  value="">なにを。</option>
                             <optgroup label="美容院">
-                                <option  value="カット">カット</option>
+                                <option  value="ヘアーカット">ヘアーカット</option>
                                 <option  value="ヘアカラー">ヘアカラー</option>
                                 <option  value="トリートメント">トリートメント</option>
                             </optgroup>
@@ -60,14 +60,14 @@
 
         <script>
             function search() {
-                if (document.getElementById('place').value !== "" && document.getElementById('purpose').value !== "" ) {
+                if (document.getElementById('place').value == "麻布" && document.getElementById('purpose').value == "ヘアーカット" ) {
                     outputgif();
                     setTimeout(loadstart, 5000);
                 }
             }
             
             function loadstart(){
-                location.href='{% url 'top2' %}'
+                location.href="https://www.azabu-hairsalon.com/"
             }
             
             function outputgif(){
