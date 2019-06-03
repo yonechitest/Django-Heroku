@@ -1,0 +1,9 @@
+$ git log
+$ git show
+$ git reset --hard <コミットID>
+
+herokuデプロイ
+git add -A .
+git commit -m "first commit"
+heroku login
+git push heroku master

@@ -1,11 +1,15 @@
 ﻿body {
-  background: #ededed;
-  font-family: 'Open Sans', sans-serif;
+  background-image: url("../../static/img/top_back.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
 }
 .center {
   position: absolute;
   display: inline-block;
-  top: 50%; left: 50%;
+  top: 40%; left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -25,33 +29,25 @@
     .custom-select-trigger {
       position: relative;
       display: block;
-      width: 130px;
-      padding: 0 84px 0 22px;
-      font-size: 22px;
-      font-weight: 300;
-      color: #fff;
-      line-height: 60px;
-      background: #5c9cd8;
-      border-radius: 4px;
-      cursor: pointer;
+      text-align: center;
+      line-height: 80px;
+      background-color: rgba( 255, 255, 255, 0.3 );
+      font-size: 25px;
+      font-weight: 100;
+      color: #000;
+      width: 380px;
+      height: 80px;
+      border-radius: 20px;
+      border: 4px solid #F4A460;
+      font-family: 'Sawarabi Gothic', sans-serif;
+      box-shadow: -2px -2px 10px black inset;
     }
-      .custom-select-trigger:after {
-        position: absolute;
-        display: block;
-        content: '';
-        width: 10px; height: 10px;
-        top: 50%; right: 25px;
-        margin-top: -3px;
-        border-bottom: 1px solid #fff;
-        border-right: 1px solid #fff;
-        transform: rotate(45deg) translateY(-50%);
-        transition: all .4s ease-in-out;
-        transform-origin: 50% 0;
-      }
+
       .custom-select.opened .custom-select-trigger:after {
         margin-top: 3px;
         transform: rotate(-135deg) translateY(-50%);
       }
+
   .custom-options {
     position: absolute;
     display: block;
@@ -76,7 +72,7 @@
     pointer-events: all;
     transform: translateY(0);
   }
-    .custom-options:before {
+    .custom-options:before {  /*プルダウン部上部の三角形*/
       position: absolute;
       display: block;
       content: '';
@@ -89,17 +85,17 @@
       transform: rotate(45deg);
       transition: all .4s ease-in-out;
     }
-    .option-hover:before {
+    .option-hover:before {   /*プルダウン部上部の三角形の色*/
       background: #f9f9f9;
     }
-    .custom-option {
+    .custom-option {   /*プルダウン部リスト内部*/
       position: relative;
       display: block;
       padding: 0 22px;
       border-bottom: 1px solid #b5b5b5;
       font-size: 18px;
       font-weight: 600;
-      color: #b5b5b5;
+      color: #4d4d4d;
       line-height: 47px;
       cursor: pointer;
       transition: all .4s ease-in-out;
@@ -110,8 +106,9 @@
     .custom-option:last-of-type {
       border-bottom: 0;
       border-radius: 0 0 4px 4px;
+      
     }
     .custom-option:hover,
     .custom-option.selection {
-      background: #f9f9f9;
+      background: #ebebeb;
     }
