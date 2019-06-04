@@ -2,113 +2,71 @@
 <!doctype html>
 <html lang=ja>
     <head>
-        <mata charset=utf-8>
-        <script type="text/javascript" src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
-        <link rel="stylesheet" type="text/css" href="{% static 'cass/bootstrap.css' %}" />
+        <mata charset=UTF-8>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
-        <link rel="stylesheet" href="{% static 'css/devtest.css' %}" type="text/css">
-        <title>limmy</title>
+        <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
+        <title>teat</title>
 
     </head>
-<body>
-    <div class="center">
-      <select name="sources" id="sources" class="custom-select sources" placeholder="選んでください">
-          <optgroup label="group">
-            <option  value="1">代官山</option>
-            <option  value="2">青山</option>
-            <option  value="4">原宿</option>
-          </optgroup>
-      </select>
-      <select name="sources" id="sources" class="custom-select sources" placeholder="選んでください">
-          <optgroup label="group">
-            <option  value="1">ヘアカット</option>
-            <option  value="2">ヘッドスパ</option>
-            <option  value="4">トリートメント</option>
-          </optgroup>
-      </select>
-
-    </div>
-            <div id="loading" ><img id="gifobj" src="" /></div>
-            <p id="saikounokekka" class="" style=""></p>
-
-
-            <script> 
-                    function search() {
-                        if (document.getElementById('place').value !== "" && document.getElementById('purpose').value == "" ) {
-                            outputgif();
-                            setTimeout(loadstart, 5000);
-                        }
-                    }
-                    
-                    function loadstart(){
-                        location.href="https://www.azabu-hairsalon.com/"
-                    }
-                    
-                    function outputgif(){
-                        document.getElementById("gifobj").src = "{% static 'img/gif-load.gif' %}";;
-                        
-                        
-                        
-                        var elm = document.getElementById("saikounokekka");
-                        elm.classList.add("saikounokekka");
-                        elm.textContent = '最高の結果をロード中';
-                    }            
-                    
-                    jQuery(window).load(function(){
-                        jQuery("#loading").hide();
-                    });
-        </script> 
+    <body>
+        <div class="sp">
+            <div class="top_pull_style container"> 
+                <div class="top_psull_style1  ">
+                    <select onChange="search()" id="place" class="form-control1 ">
+                        <option  value="">どこで。</option>
+                            <optgroup label="渋谷">
+                                <option  value="代官山">代官山</option>
+                                <option  value="青山">青山</option>
+                                <option  value="原宿">原宿</option>
+                            </optgroup>
+                            <optgroup label="港">
+                                <option  value="芝">芝</option>
+                                <option  value="赤坂">赤坂</option>
+                                <option  value="麻布">麻布</option>
+                            </optgroup>
+                    </select>
+                </div>
     
+                <div class="top_psull_style2  ">
+                    <select onChange="search()" id="purpose" class="form-control2 "　>
+                        <option  value="">なにを。</option>
+                            <optgroup label="美容院">
+                                <option  value="カット">カット</option>
+                                <option  value="ヘアカラー">ヘアカラー</option>
+                                <option  value="トリートメント">トリートメント</option>
+                            </optgroup>
+                            <optgroup label="喫茶店">
+                                <option  value="電源あり">電源あり</option>
+                                <option  value="WiFiあり">WiFiあり</option>
+                                <option  value="ペット同伴OK">ペット同伴OK</option>
+                            </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div id="loading" ><img id="gifobj" src="" /></div>
+                <p id="saikounokekka" class="" style=""></p>
+            </div>
 
-
-
-
+        <!-- 二つなにかをセットされたらロード中gif画像を表示させるスクリプト -->
         <script>
-            $(".custom-select").each(function() {
-          var classes = $(this).attr("class"),
-              id      = $(this).attr("id"),
-              name    = $(this).attr("name");
-          var template =  '<div class="' + classes + '">';
-              template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
-              template += '<div class="custom-options">';
-
-          $(this).find("option").each(function() {
-            template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
-          });
-          template += '</div></div>';
-          $(this).wrap('<div class="custom-select-wrapper"></div>');
-          $(this).hide();
-          $(this).after(template);
-        });
-
-        $(".custom-option:first-of-type").hover(function() {
-        $(this).parents(".custom-options").addClass("option-hover");
-        }, function() {
-        $(this).parents(".custom-options").removeClass("option-hover");
-        });
-
-        $(".custom-select-trigger").on("click", function() {
-        $('html').one('click',function() {
-            $(".custom-select").removeClass("opened");
-        });
-        $(this).parents(".custom-select").toggleClass("opened");
-        event.stopPropagation();
-        });
-
-        $(".custom-option").on("click", function() {
-        $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
-        $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
-        $(this).addClass("selection");
-        $(this).parents(".custom-select").removeClass("opened");
-        $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
-        });
-
-
-
-
-
-        </script>    
-
+            function search() {
+                if (document.getElementById('place').value !== "" && document.getElementById('purpose').value !== "" ) {
+                    outputgif();
+                    setTimeout(loadstart, 5000);
+                }
+            }
+            function loadstart(){
+                location.href='{% url 'find' %}'
+            }
+            
+            function outputgif(){
+                document.getElementById("gifobj").src = "{% static 'img/gif-load.gif' %}";;
+                var elm = document.getElementById("saikounokekka");
+                elm.classList.add("saikounokekka");
+                elm.textContent = '最高の結果をロード中';
+            }            
+       </script>    
     </body>    
 </html>
 
