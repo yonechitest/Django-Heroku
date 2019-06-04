@@ -3,6 +3,7 @@
 <html lang=ja>
     <head>
         <mata charset=UTF-8>
+        <script type="text/javascript" src="/static/jquery/jquery-3.2.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
@@ -10,42 +11,41 @@
 
     </head>
     <body>
-        
+            <square class="square1"></square>
+            <square class="square2"></square>
             <div class="sentence1">1秒でベストな結果を。</div>
     <div class="sentence2">Find your best in just second</div>
 
         <div class="sp">
             <div class="top_pull_style container"> 
                 <div class="top_psull_style1  ">
-                    <select onChange="search()" id="place" class="form-control1 ">
-                        <option  value="">どこで</option>
-                            <optgroup label="渋谷">
-                                <option  value="代官山">代官山</option>
-                                <option  value="青山">青山</option>
-                                <option  value="原宿">原宿</option>
-                            </optgroup>
-                            <optgroup label="港">
-                                <option  value="芝">芝</option>
-                                <option  value="赤坂">赤坂</option>
-                                <option  value="麻布">麻布</option>
-                            </optgroup>
-                    </select>
+                        <div class="btn-select">
+                                <p class="label1">どこで</p>
+                                <select class='select1'>
+                                  <option value=''>どこで</option>
+                                  <optgroup label="渋谷">
+                                  <option value='1'>青山</option>
+                                  <option value='2'>代官山</option>
+                                  <option value='3'>原宿</option>
+                                </optgroup>
+                                </select>
+                                </label>
+                                </div>
                 </div>
-    
+
                 <div class="top_psull_style2  ">
-                    <select onChange="search()" id="purpose" class="form-control2 "　>
-                        <option  value="">なにを</option>
-                            <optgroup label="美容院">
-                                <option  value="カット">カット</option>
-                                <option  value="ヘアカラー">ヘアカラー</option>
-                                <option  value="トリートメント">トリートメント</option>
-                            </optgroup>
-                            <optgroup label="喫茶店">
-                                <option  value="電源あり">電源あり</option>
-                                <option  value="WiFiあり">WiFiあり</option>
-                                <option  value="ペット同伴OK">ペット同伴OK</option>
-                            </optgroup>
-                    </select>
+                        <div class="btn-select">
+                                <p class="label2">なにを</p>
+                                <select class='select2'>
+                                  <option value=''>なにを</option>
+                                  <optgroup label="美容院">
+                                  <option value='1'>ヘアカット</option>
+                                  <option value='2'>ヘアカラー</option>
+                                  <option value='3'>トリートメント</option>
+                                  </optgroup>
+                                </select>
+                                </label>
+                                </div>
                 </div>
                 <div href="#" class="btn-square-pop">検索</div>
             </div>
@@ -72,6 +72,30 @@
                 elm.textContent = '最高の結果をロード中';
             }            
        </script>    
+
+<script>    
+// selectと同じようにonchangeでラベルを変えたいときはJSを用いる
+$('.select1').on('change', function(){
+  var $this = $(this)
+  var $option1 = $this.find('option:selected');
+  $('.label1').text($option1.text());
+  // onchange後にフォーカスしてるのが嫌な場合
+  $this.blur();
+});
+
+$('.select2').on('change', function(){
+  var $this = $(this)
+  var $option1 = $this.find('option:selected');
+  $('.label2').text($option1.text());
+  // onchange後にフォーカスしてるのが嫌な場合
+  $this.blur();
+});
+
+
+</script>    
+
+
+
     </body>    
 </html>
 
