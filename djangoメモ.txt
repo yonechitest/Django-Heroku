@@ -7,3 +7,8 @@ git add -A .
 git commit -m "first commit"
 heroku login
 git push heroku master
+
+
+#管理ユーザーid:admin　pw:yakiniku
+
+#管理ユーザーid:admin　pw:admin
