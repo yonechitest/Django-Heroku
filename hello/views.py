@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from .models import Friend, Message
-from .forms import FriendForm, MessageForm, placeForm
+from .forms import FriendForm, MessageForm, placeForm, purposeForm
 from .forms import FindForm
 from .forms import CheckForm
 from .models import place
@@ -22,6 +22,8 @@ def index(request, num=1):
         
     return render(request, 'hello/index.html', params)
 
+
+##############################場所情報管理
 # create
 def create(request):
     if(request.method == 'POST'):
@@ -77,25 +79,61 @@ def delete(request, num):
             }
     return render(request, 'hello/delete.html', params)
 
-#find
-def find(request, num=1):
-    if (request.method == 'POST'):
-        msg = request.POST['find']
-        form = FindForm(request.POST)
-        str = request.POST['find']
-        data = Friend.objects.filter(name__contains=str)
-    else:
-        msg = 'search words...'
-        form = FindForm()
-        data = Friend.objects.all()
-    page = Paginator(data, 5)
+##################################目的情報登録
+
+# createpurpose
+def createpurpose(request):
+    if(request.method == 'POST'):
+        main_purpose = request.POST['main_purpose']
+        purpose1 = request.POST['purpose1']
+        purpose2 = request.POST['purpose2']
+        purpose3 = request.POST['purpose3']
+        purpose4 = request.POST['purpose4']
+        purpose5 = request.POST['purpose5']
+        purpose6 = request.POST['purpose6']
+        purpose7 = request.POST['purpose7']
+        purpose8 = request.POST['purpose8']
+        purpose9 = request.POST['purpose9']
+        purpose10 = request.POST['purpose10']
+        purposewrap = purpose(main_purpose=main_purpose, purpose1=purpose1, purpose2=purpose2, purpose3=purpose3, purpose4=purpose4,\
+             purpose5=purpose5, purpose6=purpose6, purpose7=purpose7, purpose8=purpose8, purpose9=purpose9, purpose10=purpose10)
+        purposewrap.save()
     params = {
-            'title': 'メンバー検索画面',
-            'message': msg,
-            'form': form,
-            'data': page.get_page(num),
-        }
-    return render(request, 'hello/find.html', params)
+            'title': '目的情報登録',
+            'form': purposeForm(), 
+            'data': purpose.objects.all()           
+            }
+    return render(request, 'hello/createpurpose.html', params)
+
+
+#edit
+def editpurpose(request, num):
+    obj = purpose.objects.get(id=num)
+    if(request.method == 'POST'):
+        purposeedit = purposeForm(request.POST, instance=obj)
+        purposeedit.save()
+        return redirect(to='/dev/createpurpose')
+    params = {
+            'title': '目的情報更新',
+            'id':num,
+            'form':purposeForm(instance=obj),
+            }
+    return render(request, 'hello/editpurpose.html', params)
+    
+
+#delete
+def deletepurpose(request, num):
+    deletepurpose = purpose.objects.get(id=num)
+    if(request.method == 'POST'):
+        deletepurpose.delete()
+        return redirect(to='/dev/createpurpose')
+    params = {
+            'title': '場所情報削除',
+            'id': num,
+            'obj': deletepurpose,            
+            }
+    return render(request, 'hello/deletepurpose.html', params)
+
 
 
 #バリデーションチェック
@@ -130,6 +168,31 @@ def message(request, page=1):
             }
     return render(request, 'hello/message.html', params)
 
+
+
+
+def top(request):
+    pulllist = {
+        'place': place.objects.all(),
+        'purpose': purpose.objects.all(),
+    }
+    return render(request, 'hello/top.html', pulllist)
+
+def top2(request): 
+    params = {
+            'title': 'メンバー検索画面',
+            'data1': place.objects.all(),
+            'data2': purpose.objects.all(),
+    }
+    return render(request, 'hello/top2.html', params)
+
+
+
+def devtest(request):
+    return render(request, 'hello/devtest.html')
+    
+
+#######################################################################################################
 #msgedit
 def msgedit(request, num):
     obj = Message.objects.get(id=num)
@@ -159,29 +222,23 @@ def msgdelete(request, num):
     return render(request, 'hello/msgdelete.html', params)
 
 
-
-
-
-def top(request):
-    pulllist = {
-        'place': place.objects.all(),
-        'purpose': purpose.objects.all(),
-    }
-    return render(request, 'hello/top.html', pulllist)
-
-
-
-
-def top2(request): 
+ #find
+def find(request, num=1):
+    if (request.method == 'POST'):
+        msg = request.POST['find']
+        form = FindForm(request.POST)
+        str = request.POST['find']
+        data = Friend.objects.filter(name__contains=str)
+    else:
+        msg = 'search words...'
+        form = FindForm()
+        data = Friend.objects.all()
+    page = Paginator(data, 5)
     params = {
             'title': 'メンバー検索画面',
-            'data1': place.objects.all(),
-            'data2': purpose.objects.all(),
-    }
-    return render(request, 'hello/top2.html', params)
+            'message': msg,
+            'form': form,
+            'data': page.get_page(num),
+        }
+    return render(request, 'hello/find.html', params)
 
-
-
-def devtest(request):
-    return render(request, 'hello/devtest.html')
-    

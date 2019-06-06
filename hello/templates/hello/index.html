@@ -10,7 +10,7 @@
         <h1>{{title}}</h1>
         <p>{{message|safe}}</p>
         <input type="button" class="btn-gradient-3d-orange"  value="場所登録" onClick="location.href='{% url 'create' %}'">    
-        <input type="button" class="btn-gradient-3d-orange" value="目的登録" onClick="location.href='{% url 'find' %}'">
+        <input type="button" class="btn-gradient-3d-orange" value="目的登録" onClick="location.href='{% url 'createpurpose' %}'">
         <!--<input type="button" class="btn-gradient-3d-orange" value="コメント編集" onClick="location.href='{% url 'message' %}'">-->
         <div class="pagination">
         <!--    {% if data.has_previous %}

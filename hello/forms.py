@@ -1,5 +1,5 @@
 from django import forms
-from.models import Friend, Message, place
+from.models import Friend, Message, place, purpose
     
 class FriendForm(forms.ModelForm):
     class Meta:
@@ -33,6 +33,13 @@ class placeForm(forms.ModelForm):
         model = place
         fields = ['main_place','place1','place2','place3','place4','place5',\
                 'place6','place7','place8','place9','place10']
+
+
+class purposeForm(forms.ModelForm):
+    class Meta:
+        model = purpose
+        fields = ['main_purpose','purpose1','purpose2','purpose3','purpose4','purpose5',\
+                'purpose6','purpose7','purpose8','purpose9','purpose10']
 
 
 
