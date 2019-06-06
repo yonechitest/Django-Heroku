@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from .models import Friend, Message
-from .forms import FriendForm, MessageForm
+from .forms import FriendForm, MessageForm, placeForm
 from .forms import FindForm
 from .forms import CheckForm
 from .models import place
@@ -25,41 +25,55 @@ def index(request, num=1):
 # create
 def create(request):
     if(request.method == 'POST'):
-        obj = Friend()
-        friend = FriendForm(request.POST, instance=obj)#画面入力した値と対象テーブルをひとつの変数にまとめる。
-        friend.save()
-        return redirect(to='/hello')
+        main_place = request.POST['main_place']
+        place1 = request.POST['place1']
+        place2 = request.POST['place2']
+        place3 = request.POST['place3']
+        place4 = request.POST['place4']
+        place5 = request.POST['place5']
+        place6 = request.POST['place6']
+        place7 = request.POST['place7']
+        place8 = request.POST['place8']
+        place9 = request.POST['place9']
+        place10 = request.POST['place10']
+        placewrap = place(main_place=main_place, place1=place1, place2=place2, place3=place3, place4=place4, place5=place5,\
+                        place6=place6, place7=place7, place8=place8, place9=place9, place10=place10)
+        placewrap.save()
+    else:
+        msg = 'search words...'
+        form = FindForm()
     params = {
-            'title': '新規メンバー登録',
-            'form': FriendForm(),            
+            'title': '新規場所登録',
+            'form': placeForm(), 
+            'data': place.objects.all()           
             }
     
     return render(request, 'hello/create.html', params)
 
 #edit
 def edit(request, num):
-    obj = Friend.objects.get(id=num)
+    obj = place.objects.get(id=num)
     if(request.method == 'POST'):
-        friend = FriendForm(request.POST, instance=obj)
-        friend.save()
-        return redirect(to='/hello/find/')
+        placeedit = placeForm(request.POST, instance=obj)
+        placeedit.save()
+        return redirect(to='/dev/create')
     params = {
-            'title': 'メンバー情報更新画面',
+            'title': '場所情報更新',
             'id':num,
-            'form':FriendForm(instance=obj),
+            'form':placeForm(instance=obj),
             }
     return render(request, 'hello/edit.html', params)
 
 #delete
 def delete(request, num):
-    friend = Friend.objects.get(id=num)
+    placeedit = place.objects.get(id=num)
     if(request.method == 'POST'):
-        friend.delete()
-        return redirect(to='/hello/find/')
+        placeedit.delete()
+        return redirect(to='/dev/create')
     params = {
-            'title': 'メンバー削除画面',
+            'title': '場所情報削除',
             'id': num,
-            'obj': friend,            
+            'obj': placeedit,            
             }
     return render(request, 'hello/delete.html', params)
 
@@ -122,7 +136,7 @@ def msgedit(request, num):
     if(request.method == 'POST'):
         message = MessageForm(request.POST, instance=obj)
         message.save()
-        return redirect(to='/hello/message')
+        return redirect(to='/dev/message')
     params = {
             'title': '更新画面',
             'id':num,
@@ -136,7 +150,7 @@ def msgdelete(request, num):
     message = Message.objects.get(id=num)
     if(request.method == 'POST'):
         message.delete()
-        return redirect(to='/hello/message')
+        return redirect(to='/dev/message')
     params = {
             'title': '削除画面',
             'id': num,

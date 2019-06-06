@@ -8,19 +8,55 @@
     </head>
     <body>
         <h1>{{title}}</h1>
+        <dev style="float:left;">
         <input type="button" class="btn-gradient-3d-orange"  value="TOPにもどる" onClick="location.href='{% url 'index' %}'">    
-        <table>
+        <table >
             <form action="{% url 'create' %}" method="post">
                 {% csrf_token %}
-                <tr><th>名前</th><td>{{form.name}}</td></tr>
-                <tr><th>メール</th><td>{{form.mail}}</td></tr>
-                <tr><th rowspan="2">性別</th><td>{{form.gender}}</td></tr>
-                <tr><td>※〆有:女、〆無:男</td></tr>
-                <tr><th>年齢</th><td>{{form.age}}</td></tr>
-                <tr><th rowspan="2">登録日</th><td>{{form.birthday}}</td></tr>
-                <tr><td>yyyy-mm-dd形式</td></tr>
-                <tr><td></td><td><input type="submit" value="登録"></td></tr>
+                {{ form.as_table }}
+                <tr><td></td><td><input type="submit" value="登録"></td></tr>            
             </form>
         </table>
+        </dev >
+
+
+        <table>
+                <tr>
+                    <th>main_place</th>
+                    <th>　place1</th>
+                    <th>　place2</th>
+                    <th>　place3</th>
+                    <th>　place4</th>
+                    <th>　place5</th>
+                    <th>　place6</th>
+                    <th>　place7</th>
+                    <th>　place8</th>
+                    <th>　place9</th>
+                    <th>　place10</th>
+        
+                </tr>
+                {% for item in data %}
+                    <tr>
+                        <td>{{item.main_place}}</td>
+                        <td>{{item.place1}}</td>
+                        <td>{{item.place2}}</td>
+                        <td>{{item.place3}}</td>
+                        <td>{{item.place4}}</td>
+                        <td>{{item.place5}}</td>
+                        <td>{{item.place6}}</td>
+                        <td>{{item.place7}}</td>
+                        <td>{{item.place8}}</td>
+                        <td>{{item.place9}}</td>
+                        <td>{{item.place10}}</td>
+                        <td><a href="{% url 'edit' item.id %}">更新</td>
+                        <td><a href="{% url 'delete' item.id %}">削除</td>
+                        </ul></td>
+                    <tr>
+                {% endfor %}
+            </table>
+
+
+
+
     </body>
 </html>

@@ -7,7 +7,9 @@
         <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
     </head>
     <body>
-        <h1>{{title}}</h1>
+        <p>目的情報画面作成中...    </p>
+        <input type="button" class="btn-gradient-3d-orange"  value="TOPにもどる" onClick="location.href='{% url 'index' %}'">    
+        <!--<h1>{{title}}</h1>
         <input type="button" class="btn-gradient-3d-orange"  value="TOPにもどる" onClick="location.href='{% url 'index' %}'">    
         <input type="button" class="btn-gradient-3d-orange" value="新規コメント登録" onClick="location.href='{% url 'message' %}'">
         <p>{{mesage|safe}}</p>
@@ -59,6 +61,6 @@
                 <a href="{% url 'find' %}{{data.next_page_number}}">next&raquo;</a>
                 <a href="{% url 'find' %}{{data.paginator.num_pages}}">last&raquo;</a>
             {% endif %}
-        </div>
+        </div>-->
     </body>
 </html>

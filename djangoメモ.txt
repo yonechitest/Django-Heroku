@@ -1,14 +1,14 @@
-$ git log
+ï»¿$ git log
 $ git show
-$ git reset --hard <ƒRƒ~ƒbƒgID>
+$ git reset --hard <ã‚³ãƒŸãƒƒãƒˆID>
 
-herokuƒfƒvƒƒC
+herokuãƒ‡ãƒ—ãƒ­ã‚¤
 git add -A .
 git commit -m "first commit"
 heroku login
 git push heroku master
 
 
-#ŠÇ—ƒ†[ƒU[id:admin@pw:yakiniku
+#ç®¡ç†ãƒ¦ãƒ¼ã‚¶ãƒ¼id:adminã€€pw:yakiniku
 
-#ŠÇ—ƒ†[ƒU[id:admin@pw:admin
+#ç®¡ç†ãƒ¦ãƒ¼ã‚¶ãƒ¼id:adminã€€pw:admin

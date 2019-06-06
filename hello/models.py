@@ -29,7 +29,7 @@ class Message(models.Model):
         
 
 
-class place(models.Model):
+class place (models.Model):
     main_place = models.CharField(max_length=15)
     place1 = models.CharField(max_length=15, blank=True)
     place2 = models.CharField(max_length=15, blank=True)
@@ -49,6 +49,7 @@ class place(models.Model):
     
     def __str__(self):
         return str(self.main_place)
+        
     
     
 class purpose(models.Model):
