@@ -1,5 +1,5 @@
 from django import forms
-from.models import Friend, Message, place, purpose
+from.models import Friend, Message, place, purpose, urldata, suggest
     
 class FriendForm(forms.ModelForm):
     class Meta:
@@ -43,6 +43,17 @@ class purposeForm(forms.ModelForm):
 
 
 
+class urlForm(forms.ModelForm):
+    class Meta:
+        model = urldata
+        fields = ['shopname','url','shopplace1','shopplace2','shopplace3','shopplace4','shopplace5',\
+                'tag1','tag2','tag3','tag4','tag5','tag6','tag7','tag8','tag9','tag10']
+
+
+class suggestForm(forms.ModelForm):
+    class Meta:
+        model = suggest
+        fields = ['suggest','suggestkana']
 
 
 

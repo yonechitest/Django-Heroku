@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from .models import Friend, Message
-from .forms import FriendForm, MessageForm, placeForm, purposeForm
+from .models import Friend, Message, place, purpose, urldata, suggest
+from .forms import FriendForm, MessageForm, placeForm, purposeForm, urlForm, suggestForm
 from .forms import FindForm
 from .forms import CheckForm
-from .models import place
-from .models import purpose
 from django.core.paginator import Paginator
 
 
@@ -134,9 +132,115 @@ def deletepurpose(request, num):
             }
     return render(request, 'hello/deletepurpose.html', params)
 
+##################################URL情報登録
 
 
-#バリデーションチェック
+def createurl(request):
+    if(request.method == 'POST'):
+        url = request.POST['url']
+        shopname = request.POST['shopname']
+        shopplace1 = request.POST['shopplace1']
+        shopplace2 = request.POST['shopplace2']
+        shopplace3 = request.POST['shopplace3']
+        shopplace4 = request.POST['shopplace4']
+        shopplace5 = request.POST['shopplace5']
+        tag1 = request.POST['tag1']
+        tag2 = request.POST['tag2']
+        tag3 = request.POST['tag3']
+        tag4 = request.POST['tag4']
+        tag5 = request.POST['tag5']
+        tag6 = request.POST['tag6']
+        tag7 = request.POST['tag7']
+        tag8 = request.POST['tag8']
+        tag9 = request.POST['tag9']
+        tag10 = request.POST['tag10']
+
+        urlwrap  = urldata(url=url,shopname=shopname,shopplace1=shopplace1,shopplace2=shopplace2,shopplace3=shopplace3,shopplace4=shopplace4,shopplace5=shopplace5,\
+             tag1=tag1, tag2=tag2, tag3=tag3, tag4=tag4, tag5=tag5, tag6=tag6, tag7=tag7, tag8=tag8, tag9=tag9, tag10=tag10 )
+        urlwrap.save()
+    params = {
+            'title': 'URL情報登録',
+            'form': urlForm(), 
+            'data': urldata.objects.all()           
+            }
+    return render(request, 'hello/createurl.html', params)
+
+
+#edit
+def editurl(request, num):
+    obj = urldata.objects.get(id=num)
+    if(request.method == 'POST'):
+        editurl = urlForm(request.POST, instance=obj)
+        editurl.save()
+        return redirect(to='/dev/createurl')
+    params = {
+            'title': 'URL情報更新',
+            'id':num,
+            'form':urlForm(instance=obj),
+            }
+    return render(request, 'hello/editurl.html', params)
+
+
+#delete
+def deleteurl(request, num):
+    deleteurl = urldata.objects.get(id=num)
+    if(request.method == 'POST'):
+        deleteurl.delete()
+        return redirect(to='/dev/createurl')
+    params = {
+            'title': 'URL情報削除',
+            'id': num,
+            'obj': deleteurl,            
+            }
+    return render(request, 'hello/deleteurl.html', params)
+
+##################################サジェスト情報登録
+
+# create
+def createsuggest(request):
+    if(request.method == 'POST'):
+        suggestkannzi = request.POST['suggest']
+        suggestkana = request.POST['suggestkana']
+        suggestwrap = suggest(suggestkana=suggestkana, suggest=suggestkannzi)
+        suggestwrap.save()
+    data = suggest.objects.all().order_by('suggestkana')
+    params = {
+            'title': 'サジェスト情報登録',
+            'form': suggestForm(), 
+            'data': data           
+            }
+    return render(request, 'hello/createsuggest.html', params)
+
+#edit
+def editsuggest(request, num):
+    obj = suggest.objects.get(id=num)
+    if(request.method == 'POST'):
+        editsuggest = suggestForm(request.POST, instance=obj)
+        editsuggest.save()
+        return redirect(to='/dev/createsuggest')
+    params = {
+            'title': 'サジェスト情報更新',
+            'id':num,
+            'form':suggestForm(instance=obj),
+            }
+    return render(request, 'hello/editsuggest.html', params)
+    
+#delete
+def deletesuggest(request, num):
+    deletesuggest = suggest.objects.get(id=num)
+    if(request.method == 'POST'):
+        deletesuggest.delete()
+        return redirect(to='/dev/createsuggest')
+    params = {
+            'title': 'サジェスト情報削除',
+            'id': num,
+            'obj': deletesuggest,            
+            }
+    return render(request, 'hello/deletesuggest.html', params)
+
+
+
+#############################バリデーションチェック
 def check(request):
     params = {
             'title': 'Hello',
@@ -152,7 +256,7 @@ def check(request):
             params['message'] = 'no good.'
     return render(request, 'hello/check.html', params)
 
-#Message
+##############################Message
 def message(request, page=1):
     if(request.method == 'POST'):
         obj = Message()
@@ -173,8 +277,7 @@ def message(request, page=1):
 
 def top(request):
     pulllist = {
-        'place': place.objects.all(),
-        'purpose': purpose.objects.all(),
+        'data': suggest.objects.all(),
     }
     return render(request, 'hello/top.html', pulllist)
 

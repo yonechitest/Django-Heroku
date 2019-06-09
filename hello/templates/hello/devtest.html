@@ -1,73 +1,60 @@
 {% load static %}
-<!doctype html>
-<html lang=ja>
-  <head>
-    <mata charset=utf-8>
-    <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
-    <link rel="stylesheet" href="{% static 'css/devtest.css' %}" type="text/css">
-    <script type="text/javascript" src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
-    <title>devtest</title>
-  </head>
-  <body>
-    <div class="center">
-      <select name="sources" id="sources" class="custom-select sources" placeholder="選んでください">
-          <optgroup label="group">
-            <option  value="1">test1</option>
-            <option  value="2">test2</option>
-            <option  value="4">test3</option>
-          </optgroup>
-      </select>
-      <select name="sources" id="sources" class="custom-select sources" placeholder="選んでください">
-          <optgroup label="group">
-            <option  value="1">test1</option>
-            <option  value="2">test2</option>
-            <option  value="4">test3</option>
-          </optgroup>
-      </select>
+<!DOCTYPE html>
+<html>
+<head>
+        <mata charset=UTF-8>
+        <script type="text/javascript" src="/static/jquery/jquery-3.2.1.min.js"></script>
 
-    </div>
-      <script>
-        $(".custom-select").each(function() {
-          var classes = $(this).attr("class"),
-              id      = $(this).attr("id"),
-              name    = $(this).attr("name");
-          var template =  '<div class="' + classes + '">';
-              template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
-              template += '<div class="custom-options">';
+        <link type="text/css" rel="stylesheet"
+        href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+      <script type="text/javascript"
+        src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script type="text/javascript"
+        src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
-          $(this).find("option").each(function() {
-            template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
-          });
-          template += '</div></div>';
-          $(this).wrap('<div class="custom-select-wrapper"></div>');
-          $(this).hide();
-          $(this).after(template);
-        });
 
-        $(".custom-option:first-of-type").hover(function() {
-          $(this).parents(".custom-options").addClass("option-hover");
-        }, function() {
-          $(this).parents(".custom-options").removeClass("option-hover");
-        });
 
-        $(".custom-select-trigger").on("click", function() {
-          $('html').one('click',function() {
-            $(".custom-select").removeClass("opened");
-          });
-          $(this).parents(".custom-select").toggleClass("opened");
-          event.stopPropagation();
-        });
 
-        $(".custom-option").on("click", function() {
-          $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
-          $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
-          $(this).addClass("selection");
-          $(this).parents(".custom-select").removeClass("opened");
-          $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
-        });
-      </script>    
-  </body>    
+
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+        <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
+        <title>teat</title>
+
+
+<script type="text/javascript">
+$(function() {
+  // 3候補リストに表示するデータを配列で準備
+  var data = [
+    'accepts',
+    'action_name',
+    'add',
+    'add_column',
+    'add_index',
+    'add_timestamps',
+    'after_create',
+    'after_destroy',
+    'after_filter',
+    'all',
+  ];
+
+  // 2オートコンプリート機能を適用
+  $('#txtKeywd').autocomplete({
+    source: data,
+    autoFocus: true,
+    delay: 500,
+    minLength: 2
+  });
+});
+</script>
+</head>
+
+
+
+<body>
+<!--1オートコンプリート機能を適用するテキストボックスを準備-->
+<label for="txtKeywd">キーワード</label>：
+<input id="txtKeywd" type="search" size="20" maxlengh="50" />
+</body>
 </html>
-
-
-    

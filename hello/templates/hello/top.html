@@ -3,53 +3,60 @@
 <html lang=ja>
     <head>
         <mata charset=UTF-8>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
         <script type="text/javascript" src="/static/jquery/jquery-3.2.1.min.js"></script>
+
+        <link type="text/css" rel="stylesheet"
+        href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+      <script type="text/javascript"
+        src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script type="text/javascript"
+        src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+
+
+
+
+
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
-        <title>teat</title>
+        <title>local</title>
 
     </head>
     <body>
             <div class="sentence1">1秒でベストな結果を。</div>
     <div class="sentence2">Find your best in just second</div>
+    <div class="sentence2sp">Find your best</div> <div class="sentence2sp">in</div> <div class="sentence2sp">just second</div>
 
         <div class="sp">
             <div class="top_pull_style container"> 
-                <div class="top_psull_style1  ">
-                        <div class="btn-select">
-                                <p class="label1">どこで</p>
-                                <select onchange="search()" id="place" class='select1'>
-                                  <option value=''>どこで</option>
-                                  <optgroup label="渋谷">
-                                  <option value='1'>青山</option>
-                                  <option value='2'>代官山</option>
-                                  <option value='3'>原宿</option>
-                                </optgroup>
-                                </select>
-                                </label>
-                                </div>
-                </div>
+            <div class="btn-select1">
+                         <input id="place" value="どこで" type="search" size="20" maxlengh="50" class="label1" />                                </label>
+                    </div>
 
-                <div class="top_psull_style2  ">
-                        <div class="btn-select">
-                                <p class="label2">なにを</p>
-                                <select onchange="search()" id="purpose" class='select2'>
-                                  <option value=''>なにを</option>
-                                  <optgroup label="美容院">
-                                  <option value='1'>ヘアカット</option>
-                                  <option value='2'>ヘアカラー</option>
-                                  <option value='3'>トリートメント</option>
-                                  </optgroup>
-                                </select>
-                                </label>
-                                </div>
-                </div>
-                <div href="#" class="btn-square-pop">検索</div>
-            </div>
-            <div id="loading" ><img id="gifobj" src="" /></div>
+                    <div class="btn-select2">
+                        <input id="purpose" value="なにを" type="search" size="20" maxlengh="50" class="label2" />                                </label>
+                    </div>
+                <div href="#" onclick="search(); fade();" class="btn-square-pop">検索</div>
+                <div class="mainbox">
+                <div id="loading" ><img id="gifobj" src="" /></div>
                 <p id="saikounokekka" class="" style=""></p>
             </div>
+
+
+            <div id="fadeLayer"></div>
+        </body>    
+
+
+
+  <script type="text/javascript">
+    function fade() {
+      var target = document.getElementById("fadeLayer");
+      target.style.visibility = "visible";
+    }
+  </script>
+
 
         <!-- 二つなにかをセットされたらロード中gif画像を表示させるスクリプト -->
         <script>
@@ -71,6 +78,53 @@
             }            
        </script>    
 
+
+
+
+<script type="text/javascript">
+
+var placeData = [
+{% for item in data %}
+  ['{{item.suggestkana}}', '{{item.suggest}}'],
+  {% endfor %}
+];
+
+
+    $(function() {
+      // 2オートコンプリート機能を適用
+      $('#place').autocomplete({
+          
+        source: function(request, response) {
+            var re   = new RegExp('^(' + request.term + ')'),
+                list = [];
+            $.each(placeData, function(i, values) {
+                if(values[0].match(re) || values[1].match(re)) {
+                    list.push(values[1]);
+                }
+            });
+            response(list);},
+        autoFocus: true,
+        delay: 500,
+        minLength: 2
+      });
+    });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
+
+    
+<!--
 <script>    
 // selectと同じようにonchangeでラベルを変えたいときはJSを用いる
 $('.select1').on('change', function(){
@@ -88,14 +142,6 @@ $('.select2').on('change', function(){
   // onchange後にフォーカスしてるのが嫌な場合
   $this.blur();
 });
-
-
 </script>    
 
-
-
-    </body>    
-</html>
-
-
-    
+-->

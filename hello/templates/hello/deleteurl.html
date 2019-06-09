@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang=ja>
+    <head>
+        <mata charset=utf-8>
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <input type="button" class="btn-gradient-3d-orange"  value="もどる" onClick="location.href='{% url 'createurl' %}'">    
+        <br>
+        <br>
+        <p-delete>※レコードを削除します。</p-delete>
+        <table>
+            <tr><th>店舗名</th><td>{{obj.shopname}}</td></tr>
+            <tr><th>URL</th><td>{{obj.url}}</td></tr>
+
+
+            <form action="{% url 'deleteurl' id %}" method="post">
+                {% csrf_token %}
+                <tr><td></td><td><input type="submit" value="削除"></td></td>
+            </form>
+        </table>
+    </body>
+</html>

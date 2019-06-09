@@ -73,3 +73,36 @@ class purpose(models.Model):
 
     def __str__(self):
         return str(self.main_purpose)
+
+
+class urldata(models.Model):
+    shopname = models.CharField(max_length=30)
+    url = models.CharField(max_length=200)
+    shopplace1 = models.CharField(max_length=15, blank=True)
+    shopplace2 = models.CharField(max_length=15, blank=True)
+    shopplace3 = models.CharField(max_length=15, blank=True)
+    shopplace4 = models.CharField(max_length=15, blank=True)
+    shopplace5 = models.CharField(max_length=15, blank=True)
+    tag1 = models.CharField(max_length=20, blank=True)
+    tag2 = models.CharField(max_length=20, blank=True)
+    tag3 = models.CharField(max_length=20, blank=True)
+    tag4 = models.CharField(max_length=20, blank=True)
+    tag5 = models.CharField(max_length=20, blank=True)
+    tag6 = models.CharField(max_length=20, blank=True)
+    tag7 = models.CharField(max_length=20, blank=True)
+    tag8 = models.CharField(max_length=20, blank=True)
+    tag9 = models.CharField(max_length=20, blank=True)
+    tag10 = models.CharField(max_length=20, blank=True)
+
+    def __str__(self):
+        return str(self.url)   
+
+
+
+
+class suggest(models.Model):
+    suggest = models.CharField(max_length=15)
+    suggestkana = models.CharField(max_length=30)
+
+    def __str__(self):
+        return str(self.suggest)   

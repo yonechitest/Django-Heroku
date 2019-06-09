@@ -10,6 +10,13 @@ urlpatterns = [
     path('createpurpose', views.createpurpose, name='createpurpose'),
     path('editpurpose/<int:num>', views.editpurpose, name='editpurpose'),
     path('deletepurpose/<int:num>', views.deletepurpose, name='deletepurpose'),
+    path('createurl', views.createurl, name='createurl'),
+    path('editurl/<int:num>', views.editurl, name='editurl'),
+    path('deleteurl/<int:num>', views.deleteurl, name='deleteurl'),
+    path('createsuggest', views.createsuggest, name='createsuggest'),
+    path('editsuggest/<int:num>', views.editsuggest, name='editsuggest'),
+    path('deletesuggest/<int:num>', views.deletesuggest, name='deletesuggest'),
+
 
 
 
