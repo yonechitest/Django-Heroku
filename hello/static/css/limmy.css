@@ -321,20 +321,25 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 320% auto;
  }
 
- * {
+ ** {
    box-sizing: border-box;
 border: 1px solid red;
 }
 
 .sentence1{
-  color: rgb(112, 112, 112);
+  color: rgb(255, 255, 255);
   font-size: 20px;
 margin-top: 150px;
 margin-bottom: 10px;
 text-align: center;
+text-shadow: 
+rgb(211, 211, 211) 1px 1px 5px, rgb(211, 211, 211) -1px 1px 5px,
+rgb(211, 211, 211) 1px -1px 5px, rgb(211, 211, 211) -1px -1px 5px,
+rgb(211, 211, 211) 2px 2px 5px, rgb(211, 211, 211) -2px 2px 5px,
+rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
 }
 .sentence2{
   font-size: 0px;
@@ -342,10 +347,15 @@ text-align: center;
 }
 
 .sentence2sp{
-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);
 font-size: 27px;
 text-align: center;
 line-height: 40px;
+text-shadow: 
+rgb(211, 211, 211) 1px 1px 5px, rgb(211, 211, 211) -1px 1px 5px,
+rgb(211, 211, 211) 1px -1px 5px, rgb(211, 211, 211) -1px -1px 5px,
+rgb(211, 211, 211) 2px 2px 5px, rgb(211, 211, 211) -2px 2px 5px,
+rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
 }
 
 
@@ -382,7 +392,7 @@ line-height: 40px;
   position: absolute;
   top:0px;
   left:0px;
-  margin-top: 260px;
+  margin-top: 200px;
 
 }
   
