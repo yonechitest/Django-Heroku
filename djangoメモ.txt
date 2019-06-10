@@ -2,6 +2,9 @@
 $ git show
 $ git reset --hard <コミットID>
 
+
+
+
 herokuデプロイ
 git add -A .
 git commit -m "first commit"
