@@ -321,7 +321,7 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 420% ;
+    background-size: 440% ;
  }
 
  ** {
@@ -370,31 +370,26 @@ rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
 
 
 .saikounokekka {
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    -webkit-text-stroke: 1px orange;
-    font-family: 'Noto Sans JP', sans-serif;
-    position: relative;
-    z-index: 100;
-    margin-top: 10%;
- }
-
-#loading {
-    text-align: center;
-    margin-top: 20%;
-    position: relative;
-    z-index: 100;
+  color: white;
+  font-size: 30px;
+  -webkit-text-stroke: 1px orange;
+  font-family: 'Noto Sans JP', sans-serif;
+  position: absolute;
+  z-index: 20;
+  top:0px;
+left:0px;
+margin-top: 350px;
 }
 
-.mainbox{
+#loading {
   z-index: 20;
   position: absolute;
   top:0px;
   left:0px;
-  margin-top: 200px;
-
+  margin-top: 260px;
 }
+
+
   
   .label1 {
     position: absolute;
