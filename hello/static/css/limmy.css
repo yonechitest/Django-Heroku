@@ -324,13 +324,13 @@ body {
     background-size: cover;
  }
 
- ** {
+ * {
    box-sizing: border-box;
 border: 1px solid red;
 }
 
 .sentence1{
-  color: #FFF;
+  color: rgb(112, 112, 112);
   font-size: 20px;
 margin-top: 150px;
 margin-bottom: 10px;
@@ -342,7 +342,7 @@ text-align: center;
 }
 
 .sentence2sp{
-color: #FFF;
+color: rgb(112, 112, 112);
 font-size: 27px;
 text-align: center;
 line-height: 40px;
@@ -377,7 +377,14 @@ line-height: 40px;
     z-index: 100;
 }
 
+.mainbox{
+  z-index: 20;
+  position: absolute;
+  top:0px;
+  left:0px;
+  margin-top: 260px;
 
+}
   
   .label1 {
     position: absolute;
