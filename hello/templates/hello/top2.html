@@ -3,29 +3,13 @@
 <html lang=ja>
     <head>
         <mata charset=UTF-8>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
-        <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
-        <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
         <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
 
         <title>result</title>
     </head>
     <body>
-
-
-
-
-
-
-
-
-
-
-
         <table border="">
             <tr>
-
                 <th>店舗名</th>
                 <th>URL</th>
             </tr>
@@ -33,10 +17,9 @@
             <tr>
                 <td>{{item.shopname}}</td>
                 <td>{{item.url}}</td>
-
                 </ul></td>
             <tr>
-        {% endfor %}
-    </table>
+            {% endfor %}
+        </table>
     </body>
 </html>
