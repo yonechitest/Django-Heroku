@@ -5,141 +5,112 @@
         <mata charset=UTF-8>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
         <script type="text/javascript" src="/static/jquery/jquery-3.2.1.min.js"></script>
-
-        <link type="text/css" rel="stylesheet"
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>        <link type="text/css" rel="stylesheet"
         href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
-      <script type="text/javascript"
+        <script type="text/javascript"
         src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-      <script type="text/javascript"
+        <script type="text/javascript"
         src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
-
-
-
-
-
-
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
         <title>local</title>
-
     </head>
     <body>
-    <div class="sentence1">1秒でベストな結果を。</div>
-    <div class="sentence2">Find your best in just second</div>
-    <div class="sentence2sp">Find your best in just second</div>
-
+        <div class="sentence1">1秒でベストな結果を。</div>
+        <div class="sentence2">Find your best in just second</div>
+        <div class="sentence2sp">Find your best in just second</div>
+        <form action="{% url 'findurl' %}" onsubmit="return search()" method="post">
+            {% csrf_token %}
             <div class="top_pull_style container"> 
-            <div class="btn-select1">
-                <input id="place" value="どこで" type="search" size="20" maxlengh="50" class="label1" />                                </label>
-            </div>
+                <div class="btn-select1">
+                    <input id="place"  onfocus="clearstr(this.id);" value="どこで" name="place" size="20" maxlengh="50" class="label1" />                               
+                </div>
 
-            <div class="btn-select2">
-                <input id="purpose" value="なにを" type="search" size="20" maxlengh="50" class="label2" />                                </label>
-            </div>
-            <div href="#" onclick="search(); fade();" class="btn-square-pop">検索</div>
+                <div class="btn-select2">
+                    <input id="purpose" onfocus="clearstr(this.id);" value="なにを" name="purpose" size="20" maxlengh="50" class="label2" />                                
+                </div>
 
-            <div class="mainbox container">
+                <button href="#" type="submit" class="btn-square-pop">検索</button >
+                <div class="mainbox container">
                 <div class="container" id="loading" ><img id="gifobj" src="" /></div>
                 <p class="container" id="saikounokekka" class="" style=""></p>
             </div>
-            <div id="fadeLayer"></div>
-    </body>    
+        </form>
+        <div id="fadeLayer"></div>
+    </body>
 
-
-
-  <script type="text/javascript">
-    function fade() {
-      var target = document.getElementById("fadeLayer");
-      target.style.visibility = "visible";
-    }
-  </script>
-
-
-        <!-- 二つなにかをセットされたらロード中gif画像を表示させるスクリプト -->
-        <script>
-            function search() {
-                if (document.getElementById('place').value !== "" && document.getElementById('purpose').value !== "" ) {
-                    outputgif();
-                    setTimeout(loadstart, 5000);
-                }
+    <!--ブランクチェック-->
+    <script>
+        function search() {
+            if (document.getElementById('place').value == "" || document.getElementById('place').value == "どこで" ) {
+                Swal.fire({
+                    type:"warning",
+                        title: "場所はどちらですか？",
+                        text: "",
+                });
+                return false;
+            } else if(document.getElementById('purpose').value == "" || document.getElementById('purpose').value == "なにを" ) {
+                Swal.fire({
+                    type:"warning",
+                    title: "何をされますか？",
+                    text: "",
+                });
+                return false;
+            } else {
+                var target = document.getElementById("fadeLayer");
+                target.style.visibility = "visible";
+                outputgif();
+                setTimeout(loadstart, 5000);
             }
-            function loadstart(){
-                location.href='https://www.azabu-hairsalon.com/'
-            }
-            
-            function outputgif(){
-                document.getElementById("gifobj").src = "{% static 'img/gif-load.gif' %}";;
-                var elm = document.getElementById("saikounokekka");
-                elm.classList.add("saikounokekka");
-                elm.textContent = '最高の結果をロード中';
-            }            
-       </script>    
-
-
-
-
-<script type="text/javascript">
-
-var placeData = [
-{% for item in data %}
-  ['{{item.suggestkana}}', '{{item.suggest}}'],
-  {% endfor %}
-];
-
-
-    $(function() {
-      // 2オートコンプリート機能を適用
-      $('#place').autocomplete({
-          
-        source: function(request, response) {
-            var re   = new RegExp('^(' + request.term + ')'),
-                list = [];
-            $.each(placeData, function(i, values) {
-                if(values[0].match(re) || values[1].match(re)) {
-                    list.push(values[1]);
-                }
-            });
-            response(list);},
-        autoFocus: true,
-        delay: 500,
-        minLength: 2
-      });
-    });
+        }
     </script>
 
+    <!--フォーカス時テキストエリアクリア処理-->
+    <script>
+        function clearstr(elm) {
+            var elm = document.getElementById(elm);
+            elm.value = '';
+        };
+    </script>
 
+    <!-- 二つなにかをセットされたらロード中gif画像を表示させるスクリプト -->
+    <script>
+        function loadstart(){
+            location.href='https://www.azabu-hairsalon.com/'
+        }
+        function outputgif(){
+            document.getElementById("gifobj").src = "/static/img/gif-load.gif";;
+            var elm = document.getElementById("saikounokekka");
+            elm.classList.add("saikounokekka");
+            elm.textContent = '最高の結果をロード中';
+        }
+    </script>
 
+    <!--サジェスト機能-->
+    <script type="text/javascript">
+        var placeData = [
+            {% for item in data %}
+            ['{{item.suggestkana}}', '{{item.suggest}}'],
+            {% endfor %}
+        ];
+    $(function() {
 
-
-
-
-
-
-
-
+    // 2オートコンプリート機能を適用
+        $('#place').autocomplete({
+            source: function(request, response) {
+                var re   = new RegExp('^(' + request.term + ')'),
+                    list = [];
+                    $.each(placeData, function(i, values) {
+                        if(values[0].match(re) || values[1].match(re)) {
+                        list.push(values[1]);
+                    }
+                });
+                response(list);},
+                autoFocus: true,
+                delay: 500,
+                minLength: 2
+            });
+        });
+    </script>
 </html>
-
-
-    
-<!--
-<script>    
-// selectと同じようにonchangeでラベルを変えたいときはJSを用いる
-$('.select1').on('change', function(){
-  var $this = $(this)
-  var $option1 = $this.find('option:selected');
-  $('.label1').text($option1.text());
-  // onchange後にフォーカスしてるのが嫌な場合
-  $this.blur();
-});
-
-$('.select2').on('change', function(){
-  var $this = $(this)
-  var $option1 = $this.find('option:selected');
-  $('.label2').text($option1.text());
-  // onchange後にフォーカスしてるのが嫌な場合
-  $this.blur();
-});
-</script>    
-
--->

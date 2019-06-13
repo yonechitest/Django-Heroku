@@ -16,6 +16,7 @@ urlpatterns = [
     path('createsuggest', views.createsuggest, name='createsuggest'),
     path('editsuggest/<int:num>', views.editsuggest, name='editsuggest'),
     path('deletesuggest/<int:num>', views.deletesuggest, name='deletesuggest'),
+    path('findurl/', views.findurl, name='findurl'),
 
 
 

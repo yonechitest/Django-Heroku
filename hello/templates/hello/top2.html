@@ -4,13 +4,34 @@
     <head>
         <mata charset=utf-8>
         <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
         <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
-
     </head>
     <body>
-         <p>{{data1.main_purpose}}</p>
-         <p>{{data2.main_purpose}}</p>
 
-         <h1>ページ遷移しました。</h1>
+
+
+
+
+
+
+
+
+
+
+        <table>
+            <tr>
+                <th>店舗名</th>
+                <th>URL</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{item.shopname}}</td>
+                <td>{{item.url}}</td>
+
+                </ul></td>
+            <tr>
+        {% endfor %}
+    </table>
     </body>
 </html>

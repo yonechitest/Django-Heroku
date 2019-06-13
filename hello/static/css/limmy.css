@@ -1,32 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Sawarabi+Gothic&display=swap');
 body {
     background-image: url("../../static/img/top_back.jpg");
-    bbbbackground-position: center center;
+    /*background-position: center center;*/
+    /*background-attachment: fixed;*/
     background-repeat: no-repeat;
-    bbbbackground-attachment: fixed;
     background-size: cover;
- }
+}
 
- ** {
-   box-sizing: border-box;
-border: 1px solid red;
+** {
+    box-sizing: border-box;
+    border: 1px solid red;
 }
 
 .sentence1{
     color: #FFF;
     font-size: 20px;
-margin-left: 40px;
-margin-top: 10px;
+    margin-left: 40px;
+    margin-top: 10px;
 }
+
 .sentence2{
     color: #FFF;
     font-size: 52px;
-margin-left: 40px;
-line-height: 50px;
+    margin-left: 40px;
+    line-height: 50px;
 }
 
 .sentence2sp{
-  font-size: 0px;
+    font-size: 0px;
 }
 
 .top_pull_style {
@@ -36,7 +37,6 @@ line-height: 50px;
    margin-top: 17%;
 }
 
-
 .saikounokekka {
     color: white;
     font-size: 45px;
@@ -45,7 +45,7 @@ line-height: 50px;
     font-family: 'Noto Sans JP', sans-serif;
     position: relative;
     z-index: 100;
- }
+}
 
 #loading {
     text-align: center;
@@ -54,24 +54,23 @@ line-height: 50px;
     z-index: 100;
 }
 
-
-  .btn-select1 {
+.btn-select1 {
     width: 340px;
     height: 60px;
     position: relative;
     background-color: rgba( 255, 255, 255, 0.0 );
     cursor: pointer; /* IEでcursorがチラついたので */
-  }
+}
 
-  .btn-select2 {
+.btn-select2 {
     width: 340px;
     height: 60px;
     position: relative;
     background-color: rgba( 255, 255, 255, 0.0 );
     cursor: pointer; /* IEでcursorがチラついたので */
-  }
-  
-  .label1 {
+}
+
+.label1{
     position: absolute;
     background-color: rgba( 255, 255, 255, 0.4 );
     line-height: 45px;
@@ -91,9 +90,9 @@ line-height: 50px;
     rgb(255, 186, 38) 2px 2px 5px, rgb(255, 186, 38) -2px 2px 5px,
     rgb(255, 186, 38) 2px -2px 5px, rgb(255, 186, 38) -2px -2px 5px;
      text-align: center;
-  }
+}
 
-  .label2 {
+.label2 {
     position: absolute;
     background-color: rgba( 255, 255, 255, 0.4 );
     line-height: 45px;
@@ -112,9 +111,9 @@ line-height: 50px;
     rgb(255, 186, 38) 2px 2px 5px, rgb(255, 186, 38) -2px 2px 5px,
     rgb(255, 186, 38) 2px -2px 5px, rgb(255, 186, 38) -2px -2px 5px;
      text-align: center;
-  }
-  
-  .btn-square-pop {
+}
+
+.btn-square-pop {
     position: relative;
     display: inline-block;
     padding: 3px 15px;
@@ -123,19 +122,17 @@ line-height: 50px;
     text-decoration: none;
     color: #FFF;
     background: #F4A460;/*背景色*/
+    border:   #fd9535;
     font-weight: 100;
     height: 45px;
-    }
-    
-    .btn-square-pop:active {
+}
+
+.btn-square-pop:active {
       border-bottom: solid 2px #fd9535;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-    }
-  
+}
 
-
-
-  #fadeLayer {
+#fadeLayer {
     position:absolute;
     top:0px;
     left:0px;
@@ -145,184 +142,35 @@ line-height: 50px;
     opacity:0.4;
     visibility:hidden;
     z-index:1;
-  }
+}
 
-  .square1{
-padding: 180px 440px;
-box-sizing: border-box;
-border: 3px solid rgb(255, 255, 255);
-z-index: 10;
-position: absolute; top:1900px; left:360px ;
-transform: rotate(12deg);
-position: fixed;
-  }
-
-  .square2{
+.square1{
     padding: 180px 440px;
-    
+    box-sizing: border-box;
+    border: 3px solid rgb(255, 255, 255);
+    z-index: 10;
+    position: absolute; top:1900px; left:360px ;
+    transform: rotate(12deg);
+    position: fixed;
+}
+
+.square2{
+    padding: 180px 440px;
     box-sizing: border-box;
     border: 3px solid rgb(255, 255, 255);
     z-index: 10;
     position: absolute; top:1900px; left:360px ;
     transform: rotate(8deg);
-      }
-
-
-
-
-      	
-
-
-
-  
-
-
-
-  .いらないselect1 {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-            display: block;
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    padding: 20px;
-    padding-bottom: 15px;
-    opacity: 0;
-    position: relative;
-    z-index: 2;
-    background-color: rgb(255, 217, 183);
-    color: rgb(0, 0, 0);
-    font-size: 17px;
-    font-family: 'Sawarabi Gothic', sans-serif;
-
-  }
-  
-  .いらないselect2 {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-            display: block;
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    padding: 20px;
-    padding-bottom: 15px;
-    opacity: 0;
-    position: relative;
-    z-index: 2;
-    background-color: rgb(255, 217, 183);
-    color: rgb(0, 0, 0);
-    font-size: 17px;
-    font-family: 'Sawarabi Gothic', sans-serif;
-
-  }
-
-
-  /* IE10以上で矢印を消す */
-  .いらないselect::-ms-expand {
-    display: none; 
-  }
-  
-  /* フォーカス時 */
-  .いらないselect:focus {
-    z-index: -1;
-    opacity: 0;
-  }
-
-
-  .いらないform-control1 {
-    background-color: rgba( 255, 255, 255, 0.4 );
-    font-size: 20px;
-    font-weight: 550;
-    color: rgb(255, 255, 255);
-    width: 320px;
-    height: 60px;
-    border-color: #F4A460;
-    border-width:2px 1px 2px 2px;
-    -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
-    -moz-appearance: none;
-    appearance: none;
-    text-shadow: 
-    rgb(255, 186, 38) 1px 1px 5px, rgb(255, 186, 38) -1px 1px 5px,
-    rgb(255, 186, 38) 1px -1px 5px, rgb(255, 186, 38) -1px -1px 5px,
-    rgb(255, 186, 38) 2px 2px 5px, rgb(255, 186, 38) -2px 2px 5px,
-    rgb(255, 186, 38) 2px -2px 5px, rgb(255, 186, 38) -2px -2px 5px;
-} 
-
-
-.いらないform-control2 {
-    background-color: rgba( 255, 255, 255, 0.4 );
-    font-size: 20px;
-    font-weight: 550;
-    color: rgb(255, 255, 255);
-    width: 320px;
-    height: 60px;
-    border-color: #F4A460;
-    border-width:2px 2px 2px 2px;
-    -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
-    -moz-appearance: none;
-    appearance: none;
-    text-shadow: 
-    rgb(255, 186, 38) 1px 1px 5px, rgb(255, 186, 38) -1px 1px 5px,
-    rgb(255, 186, 38) 1px -1px 5px, rgb(255, 186, 38) -1px -1px 5px,
-    rgb(255, 186, 38) 2px 2px 5px, rgb(255, 186, 38) -2px 2px 5px,
-    rgb(255, 186, 38) 2px -2px 5px, rgb(255, 186, 38) -2px -2px 5px;
-
-} 
-
-.いらないtop_pull_style1 {
-  color: #000;
-  margin-left: 30px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-
-}
-.いらないtop_pull_style2 {
-  color: #000;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  margin-top: 10px;
 }
 
-
-.いらないform-control:focus {
-    background-color: rgba( 255, 255, 255, 0.3 );
-    font-size: 17px;
-    font-weight: 100;
-    color: #000;
-    width: 380px;
-    height: 45px;
-    border: 4px solid #F4A460;
-    -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
-    -moz-appearance: none;
-    appearance: none;
-    font-family: 'Sawarabi Gothic', sans-serif;
-} 
-
-.いらないform-control:active{
-    background-color: rgba( 255, 255, 255, 0.5 );
-    }
-
-.いらないform-control:hover{
-    background-color: rgba( 255, 255, 255, 0.5 );
-
-    }
-
-
-
-
-
-    @media screen and (max-width: 479px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
-
-
+@media screen and (max-width: 479px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
 body {
     background-image: url("../../static/img/top_back_sp.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 440% ;
- }
+}
 
  ** {
    box-sizing: border-box;
@@ -330,74 +178,73 @@ border: 1px solid red;
 }
 
 .sentence1{
-  color: rgb(255, 255, 255);
-  font-size: 20px;
-margin-top: 150px;
-margin-bottom: 10px;
-text-align: center;
-text-shadow: 
-rgb(211, 211, 211) 1px 1px 5px, rgb(211, 211, 211) -1px 1px 5px,
-rgb(211, 211, 211) 1px -1px 5px, rgb(211, 211, 211) -1px -1px 5px,
-rgb(211, 211, 211) 2px 2px 5px, rgb(211, 211, 211) -2px 2px 5px,
-rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-top: 150px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 
+    rgb(211, 211, 211) 1px 1px 5px, rgb(211, 211, 211) -1px 1px 5px,
+    rgb(211, 211, 211) 1px -1px 5px, rgb(211, 211, 211) -1px -1px 5px,
+    rgb(211, 211, 211) 2px 2px 5px, rgb(211, 211, 211) -2px 2px 5px,
+    rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
 }
+
 .sentence2{
-  font-size: 0px;
-  line-height: 10px;
+    font-size: 0px;
+    line-height: 10px;
 }
 
 .sentence2sp{
-color: rgb(255, 255, 255);
-font-size: 27px;
-text-align: center;
-line-height: 40px;
-text-shadow: 
-rgb(211, 211, 211) 1px 1px 5px, rgb(211, 211, 211) -1px 1px 5px,
-rgb(211, 211, 211) 1px -1px 5px, rgb(211, 211, 211) -1px -1px 5px,
-rgb(211, 211, 211) 2px 2px 5px, rgb(211, 211, 211) -2px 2px 5px,
-rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    text-align: center;
+    line-height: 40px;
+    text-shadow: 
+    rgb(211, 211, 211) 1px 1px 5px, rgb(211, 211, 211) -1px 1px 5px,
+    rgb(211, 211, 211) 1px -1px 5px, rgb(211, 211, 211) -1px -1px 5px,
+    rgb(211, 211, 211) 2px 2px 5px, rgb(211, 211, 211) -2px 2px 5px,
+    rgb(211, 211, 211) 2px -2px 5px, rgb(211, 211, 211) -2px -2px 5px;
 }
 
 
 
 .top_pull_style {
-   display: flex; /*その直下の要素が並列になる*/
-   flex-wrap: wrap;
-   justify-content: center;
-   margin-top: 17%;
-   margin-top: 50px
+    display: flex; /*その直下の要素が並列になる*/
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 17%;
+    margin-top: 50px
 }
 
 
 .saikounokekka {
-  color: white;
-  font-size: 30px;
-  -webkit-text-stroke: 1px orange;
-  font-family: 'Noto Sans JP', sans-serif;
-  position: absolute;
-  z-index: 20;
-  top:0px;
-left:0px;
-margin-top: 350px;
+    color: white;
+    font-size: 30px;
+    -webkit-text-stroke: 1px orange;
+    font-family: 'Noto Sans JP', sans-serif;
+    position: absolute;
+    z-index: 20;
+    top:0px;
+    left:0px;
+    margin-top: 350px;
 }
 
 #loading {
-  z-index: 20;
-  position: absolute;
-  top:0px;
-  left:0px;
-  margin-top: 260px;
+    z-index: 20;
+    position: absolute;
+    top:0px;
+    left:0px;
+    margin-top: 260px;
 }
 
-
-  
-  .label1 {
+.label1 {
     position: absolute;
     background-color: rgba( 255, 255, 255, 0.4 );
-    line-height: 45px;
+    line-height: 40px;
     color: rgb(255, 255, 255);
-    width: 340px;
-    height: 45px;   /*触ったらline-height と select1のpaddingbottomも変える*/
+    width: 300px;
+    height: 40px;   /*触ったらline-height と btn-select1のheightも変える*/
     border: 2px solid #F4A460;
     -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
     -moz-appearance: none;
@@ -409,17 +256,16 @@ margin-top: 350px;
     rgb(255, 186, 38) 1px -1px 5px, rgb(255, 186, 38) -1px -1px 5px,
     rgb(255, 186, 38) 2px 2px 5px, rgb(255, 186, 38) -2px 2px 5px,
     rgb(255, 186, 38) 2px -2px 5px, rgb(255, 186, 38) -2px -2px 5px;
-     text-align: center;
+    text-align: center;
+}
 
-  }
-
-  .label2 {
+.label2 {
     position: absolute;
     background-color: rgba( 255, 255, 255, 0.4 );
-    line-height: 45px;
+    line-height: 40px;
     color: rgb(255, 255, 255);
-    width: 340px;
-    height: 45px;
+    width: 300px;
+    height: 40px;
     border: 2px solid #F4A460;
     -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
     -moz-appearance: none;
@@ -433,42 +279,39 @@ margin-top: 350px;
     rgb(255, 186, 38) 2px -2px 5px, rgb(255, 186, 38) -2px -2px 5px;
      text-align: center;
      margin-top: 30px
-  }
-  
-  .btn-select1 {
-    width: 340px;
-    height: 45px;
-  }
-  
-  .btn-select2 {
-    width: 340px;
-    height: 45px;
-  }
+}
 
+.btn-select1 {
+    width: 300px;
+    height: 40px;
+}
 
-  .btn-square-pop {
+.btn-select2 {
+    width: 300px;
+    height: 40px;
+}
+
+.btn-square-pop {
     position: relative;
     display: inline-block;
-    padding: 3px 45px;
+    padding: 3px 20px;
     text-align: center;
     font-size: 25px;
     text-decoration: none;
     color: #FFF;
     background: #F4A460;/*背景色*/
+    border-bottom: solid 2px #fd9535;
     font-weight: 100;
     height: 45px;
-    margin-top: 65px;
-    }
-    
-    .btn-square-pop:active {
-      border-bottom: solid 2px #fd9535;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-    }
-  
+    margin-top: 55px;
+}
 
+.btn-square-pop:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
 
-
-  #fadeLayer {
+ #fadeLayer {
     position:absolute;
     top:0px;
     left:0px;
@@ -478,36 +321,26 @@ margin-top: 350px;
     opacity:0.4;
     visibility:hidden;
     z-index:1;
-  }
+}
 
-  .square1{
-padding: 180px 440px;
-box-sizing: border-box;
-border: 3px solid rgb(255, 255, 255);
-z-index: 10;
-position: absolute; top:1900px; left:360px ;
-transform: rotate(12deg);
-position: fixed;
-  }
-
-  .square2{
+.square1{
     padding: 180px 440px;
-    
+    box-sizing: border-box;
+    border: 3px solid rgb(255, 255, 255);
+    z-index: 10;
+    position: absolute; top:1900px; left:360px ;
+    transform: rotate(12deg);
+    position: fixed;
+}
+
+.square2{
+    padding: 180px 440px;
     box-sizing: border-box;
     border: 3px solid rgb(255, 255, 255);
     z-index: 10;
     position: absolute; top:1900px; left:360px ;
     transform: rotate(8deg);
-      }
+}
+}
 
-
-
-
-
-
-
-
-      }
-    
-    
 

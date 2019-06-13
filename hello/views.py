@@ -141,22 +141,22 @@ def createurl(request):
         shopname = request.POST['shopname']
         shopplace1 = request.POST['shopplace1']
         shopplace2 = request.POST['shopplace2']
-        shopplace3 = request.POST['shopplace3']
-        shopplace4 = request.POST['shopplace4']
-        shopplace5 = request.POST['shopplace5']
+##        shopplace3 = request.POST['shopplace3']
+##        shopplace4 = request.POST['shopplace4']
+##        shopplace5 = request.POST['shopplace5']
         tag1 = request.POST['tag1']
         tag2 = request.POST['tag2']
         tag3 = request.POST['tag3']
-        tag4 = request.POST['tag4']
-        tag5 = request.POST['tag5']
-        tag6 = request.POST['tag6']
-        tag7 = request.POST['tag7']
-        tag8 = request.POST['tag8']
-        tag9 = request.POST['tag9']
-        tag10 = request.POST['tag10']
+##        tag4 = request.POST['tag4']
+##        tag5 = request.POST['tag5']
+##        tag6 = request.POST['tag6']
+##        tag7 = request.POST['tag7']
+##        tag8 = request.POST['tag8']
+##        tag9 = request.POST['tag9']
+##        tag10 = request.POST['tag10']
 
-        urlwrap  = urldata(url=url,shopname=shopname,shopplace1=shopplace1,shopplace2=shopplace2,shopplace3=shopplace3,shopplace4=shopplace4,shopplace5=shopplace5,\
-             tag1=tag1, tag2=tag2, tag3=tag3, tag4=tag4, tag5=tag5, tag6=tag6, tag7=tag7, tag8=tag8, tag9=tag9, tag10=tag10 )
+        urlwrap  = urldata(url=url,shopname=shopname,shopplace1=shopplace1,shopplace2=shopplace2,\
+             tag1=tag1, tag2=tag2, tag3=tag3 )
         urlwrap.save()
     params = {
             'title': 'URL情報登録',
@@ -289,6 +289,16 @@ def top2(request):
     }
     return render(request, 'hello/top2.html', params)
 
+
+
+def findurl(request): 
+    place = request.POST['place']
+    purpose = request.POST['purpose']
+    data = urldata.objects.filter(shopplace1__contains=place, tag1__contains=purpose)
+    params = {
+            'data': data
+        }
+    return render(request, 'hello/top2.html', params)
 
 
 def devtest(request):
