@@ -14,13 +14,13 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="shortcut icon"  href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/limmy.css' %}" type="text/css">
-        <title>local</title>
+        <title>top</title>
     </head>
     <body>
         <div class="sentence1">1秒でベストな結果を。</div>
         <div class="sentence2">Find your best in just second</div>
         <div class="sentence2sp">Find your best in just second</div>
-        <form action="{% url 'findurl' %}" onsubmit="return search()" method="post">
+        <form action="{% url 'findurl' %}" onsubmit="return search()" name="myForm" method="post">
             {% csrf_token %}
             <div class="top_pull_style container"> 
                 <div class="btn-select1">
@@ -31,7 +31,7 @@
                     <input id="purpose" onfocus="clearstr(this.id);" value="なにを" name="purpose" size="20" maxlengh="50" class="label2" />                                
                 </div>
 
-                <button href="#" type="submit" class="btn-square-pop">検索</button >
+                <button onclick="submitt(); search();" type="button" class="btn-square-pop">検索</button >
                 <div class="mainbox container">
                 <div class="container" id="loading" ><img id="gifobj" src="" /></div>
                 <p class="container" id="saikounokekka" class="" style=""></p>
@@ -49,20 +49,31 @@
                         title: "場所はどちらですか？",
                         text: "",
                 });
-                return false;
             } else if(document.getElementById('purpose').value == "" || document.getElementById('purpose').value == "なにを" ) {
                 Swal.fire({
                     type:"warning",
                     title: "何をされますか？",
                     text: "",
                 });
-                return false;
-            } else {
-                var target = document.getElementById("fadeLayer");
-                target.style.visibility = "visible";
-                outputgif();
-                setTimeout(loadstart, 5000);
+            } 
+        }
+
+        function submitt() {
+            if ( document.getElementById('place').value !== "どこで") {
+                if(document.getElementById('place').value !== "" ){
+                    if(document.getElementById('purpose').value !== "なにを"){
+                        if(document.getElementById('purpose').value !== ""){
+                            var target = document.getElementById("fadeLayer");
+                            target.style.visibility = "visible";
+                            outputgif();
+                            setTimeout(loadstart, 5000);
+                        }
+                    }
+                }
             }
+        }
+        function loadstart(){
+          document.myForm.submit();
         }
     </script>
 
@@ -76,9 +87,7 @@
 
     <!-- 二つなにかをセットされたらロード中gif画像を表示させるスクリプト -->
     <script>
-        function loadstart(){
-            location.href='https://www.azabu-hairsalon.com/'
-        }
+
         function outputgif(){
             document.getElementById("gifobj").src = "/static/img/gif-load.gif";;
             var elm = document.getElementById("saikounokekka");

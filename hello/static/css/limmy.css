@@ -7,7 +7,7 @@ body {
     background-size: cover;
 }
 
-** {
+* {
     box-sizing: border-box;
     border: 1px solid red;
 }
@@ -243,7 +243,7 @@ border: 1px solid red;
     background-color: rgba( 255, 255, 255, 0.4 );
     line-height: 40px;
     color: rgb(255, 255, 255);
-    width: 300px;
+    width: 340px;
     height: 40px;   /*触ったらline-height と btn-select1のheightも変える*/
     border: 2px solid #F4A460;
     -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
@@ -264,7 +264,7 @@ border: 1px solid red;
     background-color: rgba( 255, 255, 255, 0.4 );
     line-height: 40px;
     color: rgb(255, 255, 255);
-    width: 300px;
+    width: 340px;
     height: 40px;
     border: 2px solid #F4A460;
     -webkit-appearance: none; /*以下3行でIE以外で矢印を無効にしてる*/
@@ -282,12 +282,12 @@ border: 1px solid red;
 }
 
 .btn-select1 {
-    width: 300px;
+    width: 340px;
     height: 40px;
 }
 
 .btn-select2 {
-    width: 300px;
+    width: 340px;
     height: 40px;
 }
 
