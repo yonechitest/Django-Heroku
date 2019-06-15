@@ -40,7 +40,7 @@
         <div id="fadeLayer"></div>
     </body>
 
-    <!--ブランクチェック-->
+    <!--フォームチェック-->
     <script>
         function search() {
             if (document.getElementById('place').value == "" || document.getElementById('place').value == "どこで" ) {
@@ -96,7 +96,7 @@
         }
     </script>
 
-    <!--サジェスト機能-->
+    <!--サジェスト-->
     <script type="text/javascript">
         var placeData = [
             {% for item in data %}
