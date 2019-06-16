@@ -1,17 +1,33 @@
-﻿$ git log
+﻿#管理ユーザーid:admin　pw:yakiniku
+#管理ユーザーid:admin　pw:admin
+
+
+#ローカルサーバー起動する方法
+cd Desktop/django_app
+python manage.py runserver
+
+
+過去の内容に戻す手順
+$ git log
 $ git show
 $ git reset --hard <コミットID>
 
 
-
-
-herokuデプロイ
+#herokuにデプロイする手順
 git add -A .
-git commit -m "first commit"
+git commit -m ""
 heroku login
 git push heroku master
 
 
-#管理ユーザーid:admin　pw:yakiniku
+#GitHubにpushする手順
+git add -A .
+git commit -m ""
+git push origin master（パスコード⇒Enter passphrase for key '/c/Users/USER/.ssh/id_rsa':Y****1k*）
 
-#管理ユーザーid:admin　pw:admin
+途中、、、
+! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:yonechitest/HerokuDjango.git'
+が出たら、、、
+git fetch && git merge origin/master
+
