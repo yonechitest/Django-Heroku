@@ -13,7 +13,7 @@ def index(request, num=1):
     data = Friend.objects.all()
     page = Paginator(data, 5)
     params = {
-            'title': 'TOP画面',
+            'title': 'データ登録画面',
             'message':'',
             'data': page.get_page(num),
             }
