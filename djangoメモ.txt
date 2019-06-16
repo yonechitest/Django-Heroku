@@ -30,4 +30,5 @@ git push origin master（パスコード⇒Enter passphrase for key '/c/Users/US
 error: failed to push some refs to 'git@github.com:yonechitest/HerokuDjango.git'
 が出たら、、、
 git fetch && git merge origin/master
+を入力してpushする。
 

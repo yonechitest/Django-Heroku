@@ -40,6 +40,33 @@
         <div id="fadeLayer"></div>
     </body>
 
+    <!--サジェスト-->
+    <script type="text/javascript">
+        var placeData = [
+            {% for item in data %}
+            ['{{item.suggestkana}}', '{{item.suggest}}'],
+            {% endfor %}
+        ];
+    $(function() {
+
+    // 2オートコンプリート機能を適用
+        $('#place').autocomplete({
+            source: function(request, response) {
+                var re   = new RegExp('^(' + request.term + ')'),
+                    list = [];
+                    $.each(placeData, function(i, values) {
+                        if(values[0].match(re) || values[1].match(re)) {
+                        list.push(values[1]);
+                    }
+                });
+                response(list);},
+                autoFocus: true,
+                delay: 500,
+                minLength: 2
+            });
+        });
+    </script>
+
     <!--フォームチェック-->
     <script>
         function search() {
@@ -94,32 +121,5 @@
             elm.classList.add("saikounokekka");
             elm.textContent = '最高の結果をロード中';
         }
-    </script>
-
-    <!--サジェスト-->
-    <script type="text/javascript">
-        var placeData = [
-            {% for item in data %}
-            ['{{item.suggestkana}}', '{{item.suggest}}'],
-            {% endfor %}
-        ];
-    $(function() {
-
-    // 2オートコンプリート機能を適用
-        $('#place').autocomplete({
-            source: function(request, response) {
-                var re   = new RegExp('^(' + request.term + ')'),
-                    list = [];
-                    $.each(placeData, function(i, values) {
-                        if(values[0].match(re) || values[1].match(re)) {
-                        list.push(values[1]);
-                    }
-                });
-                response(list);},
-                autoFocus: true,
-                delay: 500,
-                minLength: 2
-            });
-        });
     </script>
 </html>
