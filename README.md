@@ -1,6 +1,6 @@
 ## 概要
 <br>・Djangoを用いたCRUD（主にフロント開発）
-<br>・アラート出力はSweetAlertを使用。
+<br>・SweetAlert,Bootstrapを使用。
 <br>・DBに登録した地名データをサジェスト機能として表示させる。
 <br>・レスポンシブウェブデザイン対応（スマートフォンはIphoneXのみ対応）
 <br>・URL情報に存在する場所、tagをwhere句の条件にしてURL情報と店舗名情報を検索する。
