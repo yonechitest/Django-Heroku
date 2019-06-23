@@ -7,4 +7,4 @@
 <br>※WEBアプリはゼロから（IDE、Ptyhonインストール段階から）作成しました。
 <br>
 <br>データ登録画面https://yonetomodjango.herokuapp.com/dev/
-<br>TOP画面https://yonetomodjango.herokuapp.com/dev/top)https://yonetomodjango.herokuapp.com/dev/top
+<br>TOP画面https://yonetomodjango.herokuapp.com/dev/top
