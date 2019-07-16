@@ -1,6 +1,10 @@
-主な仕様
-・Djangoを使ったCRUD
-・TOP画面ではサジェストワードtableに登録してある地名情報をサジェスト機能のデータとして利用。
-・アラート出力はsweetalertを実装。
-・レスポンシブウェブデザイン対応（スマートフォンはIphonexのみ対応）
-・URL情報tableに存在する場所x列、tagy列をwhere句の条件にしてURL情報と店舗名情報を表示。
+## 概要
+<br>・Djangoを用いたCRUD（主にフロント開発）
+<br>・SweetAlert,Bootstrapを使用。
+<br>・DBに登録した地名データをサジェスト機能として表示させる。
+<br>・レスポンシブウェブデザイン対応（スマートフォンはIphoneXのみ対応）
+<br>・URL情報に存在する場所、tagをwhere句の条件にしてURL情報と店舗名情報を検索する。
+<br>※WEBアプリはゼロから（IDE、Ptyhonインストール段階から）作成しました。
+<br>
+<br>データ登録画面https://yonetomodjango.herokuapp.com/dev
+<br>TOP画面https://yonetomodjango.herokuapp.com/dev/top
