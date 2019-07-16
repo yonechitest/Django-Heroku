@@ -24,7 +24,7 @@ git push heroku master
 #GitHubにpushする手順
 git add -A .
 git commit -m ""
-git push origin master（パスコード⇒Enter passphrase for key '/c/Users/USER/.ssh/id_rsa':Y****1k*）
+git push origin master（パスコード⇒Enter passphrase for key '/c/Users/USER/.ssh/id_rsa':Y****1**）
 
 途中、、、
 ! [rejected]        master -> master (fetch first)

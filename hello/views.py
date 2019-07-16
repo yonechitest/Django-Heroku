@@ -274,6 +274,8 @@ def message(request, page=1):
 
 
 
+def djangoportfolio(request):
+    return render(request, 'hello/djangoportfolio.html')
 
 def top(request):
     pulllist = {

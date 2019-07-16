@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>{{title}}</h1>
-        <input type="button" class="btn-gradient-3d-orange"  value="場所一覧画面にもどる" onClick="location.href='{% url 'createsuggest' %}'">    
+        <input type="button" class="btn-gradient-3d-orange"  value="地名一覧画面にもどる" onClick="location.href='{% url 'createsuggest' %}'">    
         <table >
                 <form action="{% url 'editsuggest' id %}" method="post">
                     {% csrf_token %}

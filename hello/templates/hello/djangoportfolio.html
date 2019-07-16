@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang=ja>
+    <head>
+        <mata charset=UTF-8>
+        <title>機能詳細</title>
+    </head>
+    <style>
+        body {
+            background-color:#ffffe2
+            }
+    </style>    
+
+    <body>
+    <h1>●機能詳細</h1>
+
+
+    <br>
+    <h3>・データベース登録・更新・削除機能</h3>
+    <p><a href="{% url 'index' %}" target="_blank">●https://yonetomodjango.herokuapp.com/dev（データベース登録・更新・削除機能のリンクへ） </a></p>
+        <br>
+    <img src="{% static 'img/top.jpg' %}" width="630" height="370">    
+    <p>地名情報とURL情報を登録・更新・削除が可能。</p>
+    <br><br>
+    <img src="{% static 'img/suggest.jpg' %}" width="630" height="370">    
+    <p>図のように入力し新規登録ボタンを押すと地名情報テーブルに登録される。</p>
+    <p>※サジェスト機能についてはフロント側の機能で説明する。</p>
+    <br><br>
+    <img src="{% static 'img/url.jpg' %}" width="650" height="380">    
+    <p>URL情報登録画面でも同様に登録・更新・削除が可能。</p>
+    <br>
+    <br><br>
+    
+    
+    
+    <h3>・フロント側の機能（Chlome対応）</h3>
+    <p><a href="{% url 'top' %}" target="_blank">●https://yonetomodjango.herokuapp.com/dev/top（フロント側の機能のリンクへ）</a></p>
+    <br>
+    <img src="{% static 'img/frontsuggest.png' %}" width="650" height="380">    
+    <p>2文字入力すると地名テーブルのかな情報を参照してサジェストワードを表示させる。（jQueryで実装）</p>
+    <p>※図は'あざ'と入力すると地名テーブルに登録されてるワードが表示される。</p>
+    <br><br>
+    <img src="{% static 'img/frontrwd.jpg' %}" width="650" height="380">    
+    <p>スマホのデザインにも対応（iphoneX対応）</p>
+    <br><br>
+    <img src="{% static 'img/frontcheck.jpg' %}" width="650" height="380">    <br>
+    <p>テキストエリアに未変更、未入力箇所があると...。↓</p>
+    <img src="{% static 'img/frontcheck2.jpg' %}" width="650" height="380">    
+    <p>アラートダイアログが表示される（SweetAlertを実装）</p>
+    <br><br>
+    <img src="{% static 'img/frontserch.jpg' %}" width="650" height="380">    
+    <p>キーワードを入れて検索ボタンを押すとボタンと入力エリアが非活性になり、ローディング画面が５秒間流れる。</p>
+    <p>※Javascripで５秒間を制御</p>
+    <br><br>
+    <img src="{% static 'img/frontresult.jpg' %}" width="650" height="380">
+    <p>データベースのURLテーブルを検索し、入力ワードを含むデータの店舗名とURLを表示させる。</p>
+    <p>※図の検索結果は既に登録されていた麻布Hairのデータが表示されている。</p>
+    <br>
+
+     <br><br><br>
+
+
+    </body>
+</html>
